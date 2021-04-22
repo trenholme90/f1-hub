@@ -1,3 +1,9 @@
+import Container from 'react-bootstrap/Container'
+
 export default function Dashboard() {
-	return <h1>Welcome to the F1 Hub</h1>
+	return (
+		<Container className='my-4'>
+			<h1>Welcome to the F1 Hub</h1>
+		</Container>
+	)
 }
