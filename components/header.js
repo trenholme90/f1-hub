@@ -26,15 +26,26 @@ export default function Header() {
 						<Nav.Link href='/standings'>Standings</Nav.Link>
 					</Link>
 					<Link href='/teams'>
-						<Nav.Link href='/drivers'>Teams</Nav.Link>
+						<Nav.Link href='/teams'>Teams</Nav.Link>
 					</Link>
 					<NavDropdown
 						title='Drivers'
 						bg='dark'
 						variant='light'
 						id='basic-nav-dropdown'>
-						<Link href='/drivers/lewis-hamilton'>
-							<NavDropdown.Item href='#action/3.1'>Lewis Hamilton</NavDropdown.Item>
+						<Link
+							href={{
+								pathname: '/drivers/[id]',
+								query: { id: 'Lewis Hamilton' },
+							}}>
+							<a className='dropdown-item'>Lewis Hamilton</a>
+						</Link>
+						<Link
+							href={{
+								pathname: '/drivers/[id]',
+								query: { id: 'Max Verstappen' },
+							}}>
+							<a className='dropdown-item'>Lewis Verstappen</a>
 						</Link>
 					</NavDropdown>
 					<Link href='/races'>
