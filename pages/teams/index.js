@@ -1,21 +1,19 @@
-import { useEffect, useState } from 'react'
-import getApiDataList from '../../api/getApiDataList'
+//import { useEffect } from 'react'
+import { useSelector } from 'react-redux'
+//import getApiDataList from '../../api/getApiDataList'
+//import { requestTeams } from './state/actions'
 
 export default function Teams() {
-	const [teams, setTeams] = useState([])
+	const teams = useSelector((state) => state.requestTeams.teams)
+	// const dispatch = useDispatch()
 
-	useEffect(() => {
-		const init = async () => {
-			const data = await getApiDataList('teams')
-			setTeams(data)
-		}
-		init()
-		console.log(teams)
-	}, [])
+	// useEffect(() => {
+	// 	dispatch(requestTeams())
+	// }, [])
 	return (
 		<div>
 			<h1>F1 Teams</h1>
-			{teams.length > 0 ? (
+			{teams ? (
 				teams.map((team, index) => <h5 key={index}>{team.name}</h5>)
 			) : (
 				<h5>Loading...</h5>
