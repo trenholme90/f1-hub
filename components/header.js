@@ -4,8 +4,11 @@ import NavDropdown from 'react-bootstrap/NavDropdown'
 
 import Link from 'next/link'
 import Image from 'next/image'
+import { useSelector } from 'react-redux'
 
 export default function Header() {
+	const drivers = useSelector((state) => state.requestDrivers.drivers)
+
 	return (
 		<Navbar variant='dark' sticky='top' expand='lg' className='container'>
 			<Link href='/'>
@@ -33,20 +36,21 @@ export default function Header() {
 						bg='dark'
 						variant='light'
 						id='basic-nav-dropdown'>
-						<Link
-							href={{
-								pathname: '/drivers/[id]',
-								query: { id: 'Lewis Hamilton' },
-							}}>
-							<a className='dropdown-item'>Lewis Hamilton</a>
-						</Link>
-						<Link
-							href={{
-								pathname: '/drivers/[id]',
-								query: { id: 'Max Verstappen' },
-							}}>
-							<a className='dropdown-item'>Lewis Verstappen</a>
-						</Link>
+						{drivers.length > 0 ? (
+							drivers.map((driver) => {
+								return (
+									<Link
+										href={{
+											pathname: '/drivers/[id]',
+											query: { id: `${driver.name}` },
+										}}>
+										<a className='dropdown-item'>{driver.name}</a>
+									</Link>
+								)
+							})
+						) : (
+							<div>No drivers</div>
+						)}
 					</NavDropdown>
 					<Link href='/races'>
 						<Nav.Link href='/races'>Races</Nav.Link>
