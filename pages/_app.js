@@ -7,6 +7,7 @@ import { store } from '../state/store'
 import { BuildStore } from '../state/storeBuilder'
 
 import Header from '../components/header'
+import SideBar from '../components/sidebar'
 import { Container } from 'react-bootstrap'
 
 function MyApp({ Component, pageProps }) {
@@ -24,11 +25,14 @@ function MyApp({ Component, pageProps }) {
 					<header className='bg-dark shadow'>
 						<Header />
 					</header>
-					<main>
-						<Container className='my-4'>
-							<Component {...pageProps} />
-						</Container>
-					</main>
+					<div className={'site-wrapper flex'}>
+						<SideBar></SideBar>
+						<main>
+							<Container className='my-4'>
+								<Component {...pageProps} />
+							</Container>
+						</main>
+					</div>
 				</BuildStore>
 			</Provider>
 		</div>

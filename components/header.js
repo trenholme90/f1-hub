@@ -1,16 +1,11 @@
 import Navbar from 'react-bootstrap/Navbar'
-import Nav from 'react-bootstrap/Nav'
-import NavDropdown from 'react-bootstrap/NavDropdown'
 
 import Link from 'next/link'
 import Image from 'next/image'
-import { useSelector } from 'react-redux'
 
 export default function Header() {
-	const drivers = useSelector((state) => state.requestDrivers.drivers)
-
 	return (
-		<Navbar variant='dark' sticky='top' expand='lg' className='container'>
+		<Navbar variant='dark' sticky='top' expand='lg'>
 			<Link href='/'>
 				<Navbar.Brand href='#home'>
 					<Image
@@ -22,41 +17,37 @@ export default function Header() {
 					/>
 				</Navbar.Brand>
 			</Link>
-			<Navbar.Toggle aria-controls='basic-navbar-nav' />
-			<Navbar.Collapse id='basic-navbar-nav'>
-				<Nav className='ml-auto'>
-					<Link href='/standings'>
-						<Nav.Link href='/standings'>Standings</Nav.Link>
+			<div className='flex flex-fill justify-content-end'>
+				<span className='mr-3 py-1'>
+					<Link href='/https://f1store.formula1.com/en/?_s=bm-fi-f1-prtsite-bottomnav-230720-jm'>
+						<span className='cursor-pointer text-white'>Store</span>
 					</Link>
-					<Link href='/teams'>
-						<Nav.Link href='/teams'>Teams</Nav.Link>
+				</span>
+				<span className='mr-3'>
+					<Link href='/https://www.instagram.com/f1/'>
+						<Image
+							src='/instagram.svg'
+							className='justify-content-end'
+							alt='instagram logo'
+							width={30}
+							height={30}
+							priority={true}
+						/>
 					</Link>
-					<NavDropdown
-						title='Drivers'
-						bg='dark'
-						variant='light'
-						id='basic-nav-dropdown'>
-						{drivers.length > 0 ? (
-							drivers.map((driver) => {
-								return (
-									<Link
-										href={{
-											pathname: '/drivers/[id]',
-											query: { id: `${driver.name}` },
-										}}>
-										<a className='dropdown-item'>{driver.name}</a>
-									</Link>
-								)
-							})
-						) : (
-							<div>No drivers</div>
-						)}
-					</NavDropdown>
-					<Link href='/races'>
-						<Nav.Link href='/races'>Races</Nav.Link>
+				</span>
+				<span>
+					<Link href='/https://twitter.com/F1'>
+						<Image
+							src='/twitter.svg'
+							className='justify-content-end'
+							alt='twitter logo'
+							width={30}
+							height={30}
+							priority={true}
+						/>
 					</Link>
-				</Nav>
-			</Navbar.Collapse>
+				</span>
+			</div>
 		</Navbar>
 	)
 }
