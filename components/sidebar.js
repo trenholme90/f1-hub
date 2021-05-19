@@ -20,7 +20,7 @@ export default function SideBar() {
 
 	return (
 		<aside
-			className={`d-flex pos-absolute-small ${
+			className={`d-flex pos-absolute-small z-index-above ${
 				menuToggle ? 'toggled position-absolute' : ''
 			}`}
 			id='wrapper'>

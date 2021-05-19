@@ -11,9 +11,8 @@ export const requestDrivers = (season = 2021) => async (dispatch) => {
 	dispatch({ type: REQUEST_DRIVERS_PENDING })
 	try {
 		const driverStandings = await getDriverStandings(season)
-		console.log(driverStandings)
 		const driverIDs = driverStandings.map((position) => position.driver.id)
-		console.log(driverIDs)
+		console.log('drivers')
 		const drivers = await Promise.all(
 			driverIDs.map(async (id) => await getDriverById(id))
 		)

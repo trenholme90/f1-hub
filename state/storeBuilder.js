@@ -1,5 +1,6 @@
 import { useDispatch } from 'react-redux'
 import { useEffect } from 'react'
+import { useState } from 'react'
 
 import { requestTeams } from './teams/actions'
 import { requestStandings } from './standings/actions'
@@ -9,14 +10,18 @@ import { requestDrivers } from './drivers/actions'
 
 export const BuildStore = ({ children }) => {
 	const dispatch = useDispatch()
+	const [loading, setLoading] = useState(true)
 
-	useEffect(() => {
-		dispatch(requestTeams())
-		dispatch(requestStandings())
-		dispatch(requestRacesBySeason())
-		dispatch(requestLastRace())
-		dispatch(requestDrivers())
+	useEffect(async () => {
+		await Promise.all([
+			dispatch(requestTeams()),
+			dispatch(requestStandings()),
+			dispatch(requestRacesBySeason()),
+			dispatch(requestLastRace()),
+			dispatch(requestDrivers()),
+		])
+		setLoading(false)
 	}, [])
 
-	return children
+	return !loading ? children : <h5>Loading</h5>
 }
