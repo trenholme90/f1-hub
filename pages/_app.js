@@ -1,4 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
+import '../styles/loader.css'
 import '../styles/base.css'
 
 import Head from 'next/head'

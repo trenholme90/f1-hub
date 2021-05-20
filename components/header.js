@@ -24,27 +24,31 @@ export default function Header() {
 					</Link>
 				</span>
 				<span className='mr-3'>
-					<Link href='/https://www.instagram.com/f1/'>
-						<Image
-							src='/instagram.svg'
-							className='justify-content-end'
-							alt='instagram logo'
-							width={30}
-							height={30}
-							priority={true}
-						/>
+					<Link href='https://www.instagram.com/f1/'>
+						<span>
+							<Image
+								src='/instagram.svg'
+								className='justify-content-end'
+								alt='instagram logo'
+								width={30}
+								height={30}
+								priority={true}
+							/>
+						</span>
 					</Link>
 				</span>
 				<span>
-					<Link href='/https://twitter.com/F1'>
-						<Image
-							src='/twitter.svg'
-							className='justify-content-end'
-							alt='twitter logo'
-							width={30}
-							height={30}
-							priority={true}
-						/>
+					<Link href='https://twitter.com/F1'>
+						<span>
+							<Image
+								src='/twitter.svg'
+								className='justify-content-end'
+								alt='twitter logo'
+								width={30}
+								height={30}
+								priority={true}
+							/>
+						</span>
 					</Link>
 				</span>
 			</div>

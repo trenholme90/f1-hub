@@ -1,0 +1,51 @@
+.page-loader {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 100vw;
+	height: 100vh;
+	max-width: 700px;
+	padding: 1em;
+	margin: -10rem auto 0;
+}
+
+.page-loader .logo {
+	min-height: 60px !important;
+	min-width: 150px !important;
+	position: static !important;
+}
+
+@media (min-width: 768px) {
+	.page-loader .logo {
+		min-height: 90px !important;
+		min-width: 200px !important;
+		position: static !important;
+	}
+}
+
+.circuit-loader-container {
+	position: relative;
+	height: 200px;
+	width: 100%;
+}
+
+.circuit-loader {
+	stroke-dasharray: 7000;
+	stroke-dashoffset: 0;
+	position: absolute;
+}
+
+.circuit-loader.stroke-red {
+	animation: dash 3s linear forwards infinite;
+}
+
+.stroke-red path {
+	stroke: #ff0000;
+}
+
+@keyframes dash {
+	from {
+		stroke-dashoffset: 7000;
+	}
+}
